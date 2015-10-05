@@ -16,11 +16,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mTextView;
+        public View view;
 
-        public ViewHolder(TextView v) {
+        public ViewHolder(View v) {
             super(v);
-            mTextView = v;
+            view = v;
         }
     }
 
@@ -38,7 +38,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
                 .inflate(R.layout.my_text_view, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
-        return new ViewHolder((TextView) v.findViewById(R.id.layout_text_view));
+        return new ViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -46,7 +46,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset[position]);
+        ((TextView) holder.view).setText(mDataset[position]);
 
     }
 
